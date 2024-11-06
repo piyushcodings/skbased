@@ -146,9 +146,8 @@ def sk_based_charge():
     decline_code = charge_response.get('last_payment_error', {}).get('code', 'none')
 
     # Construct message based on the decline code
-    if error_code == 'card_declined':
-        message = f"#DIE CC: {cc} | Card Declined (Error Code: {error_code}, Decline Code: {decline_code})"
-    elif error_code == 'cvc_check':
+    
+    if error_code == 'cvc_check':
         message = f"#LIVE CC: {cc} | CVV Passed (Error Code: {error_code})"
     elif error_code == 'generic_decline':
         message = f"#DIE CC: {cc} | Generic Decline (Error Code: {error_code})"
